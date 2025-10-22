@@ -1,0 +1,50 @@
+@use './_tokens' as *;
+
+// Apply all Miele design tokens as CSS custom properties for Material Components
+html {
+  // Material Design Component (MDC) theme variables
+  --mdc-theme-primary: #{$m-primary};
+  --mdc-theme-secondary: #{$m-secondary};
+  --mdc-theme-surface: #{$m-body-bg};
+  --mdc-theme-background: #{$m-body-bg};
+  --mdc-theme-error: #{$m-danger};
+  --mdc-theme-on-primary: #{$m-white};
+  --mdc-theme-on-secondary: #{$m-white};
+  --mdc-theme-on-surface: #{$m-body-color};
+  --mdc-theme-on-background: #{$m-body-color};
+  --mdc-theme-on-error: #{$m-white};
+
+  // Material Component specific colors
+  --mdc-filled-button-container-color: #{$m-primary};
+  --mdc-filled-button-label-text-color: #{$m-white};
+  --mdc-outlined-button-outline-color: #{$m-border-color};
+  --mdc-outlined-button-label-text-color: #{$m-body-color};
+  --mdc-text-button-label-text-color: #{$m-link-color};
+  
+  // Toolbar/AppBar colors
+  --mdc-top-app-bar-container-color: #{$m-gray-800};
+  --mdc-top-app-bar-title-ink-color: #{$m-white};
+  --mdc-top-app-bar-action-icon-color: #{$m-white};
+  
+  // Card colors
+  --mdc-card-container-color: #{$m-body-bg};
+  --mdc-card-outline-color: #{$m-border-color};
+  
+  // Form field colors
+  --mdc-text-field-container-color: #{$m-body-bg};
+  --mdc-text-field-outline-color: #{$m-border-color};
+  --mdc-text-field-label-text-color: #{$m-gray-600};
+  --mdc-text-field-input-text-color: #{$m-body-color};
+  
+  // Focus ring
+  --mdc-focus-ring-color: #{$focus-ring-color};
+  --mdc-focus-ring-width: #{$focus-ring-width};
+  
+  // Global application styles
+  background: $m-body-bg;
+  color: $m-body-color;
+  font-family: $font-family;
+  font-size: $body-font-size;
+  font-weight: $body-font-weight;
+  line-height: $body-line-height;
+}

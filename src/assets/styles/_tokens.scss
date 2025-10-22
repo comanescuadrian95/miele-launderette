@@ -1,0 +1,78 @@
+// Miele Brand Colors
+$m-primary: #f59b00;
+$m-secondary: #666;
+$m-success: #61cf77;
+$m-info: #3d8fff;
+$m-warning: #ffcc00;
+$m-danger: #ff1e14;
+
+// Miele Gray Scale
+$m-black: #000;
+$m-white: #fff;
+$m-gray-100: #f8f9fa;
+$m-gray-200: #e9ecef;
+$m-gray-300: #dee2e6;
+$m-gray-400: #ced4da;
+$m-gray-500: #adb5bd;
+$m-gray-600: #6c757d;
+$m-gray-700: #495057;
+$m-gray-800: #343a40;
+$m-gray-900: #212529;
+
+// Semantic Colors
+$m-body-color: #212529;
+$m-body-bg: #fff;
+$m-link-color: #f59b00;
+$m-link-hover-color: #c47c00;
+
+// Background Variants
+$m-primary-bg-subtle: #fdebcc;
+$m-secondary-bg-subtle: #e0e0e0;
+$m-success-bg-subtle: #dff5e4;
+$m-info-bg-subtle: #d8e9ff;
+$m-warning-bg-subtle: #fff5cc;
+$m-danger-bg-subtle: #ffd2d0;
+$m-tertiary-bg: #f8f9fa;
+
+// Border Colors
+$m-border-color: #dee2e6;
+$m-border-color-translucent: rgba(0, 0, 0, .175);
+
+// Launderette Status Colors
+$m-in-progress: #61cf77;
+$m-completed: #6c757d;
+$m-cancelled: #495057;
+$m-failure: #ff1e14;
+
+// Spacing (8pt system)
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 24px;
+$space-6: 32px;
+$space-7: 48px;
+
+// Border Radius
+$radius-sm: 0.25rem;
+$radius-base: 0.375rem;
+$radius-lg: 0.5rem;
+$radius-xl: 1rem;
+$radius-xxl: 2rem;
+$radius-pill: 50rem;
+
+// Shadows
+$shadow-sm: 0 .125rem .25rem rgba(0, 0, 0, .075);
+$shadow-base: 0 .5rem 1rem rgba(0, 0, 0, .15);
+$shadow-lg: 0 1rem 3rem rgba(0, 0, 0, .175);
+$shadow-inset: inset 0 1px 2px rgba(0, 0, 0, .075);
+
+// Focus Ring
+$focus-ring-width: 0.25rem;
+$focus-ring-color: rgba(245, 155, 0, .25);
+
+// Typography
+$font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+$body-font-size: 1rem;
+$body-font-weight: 400;
+$body-line-height: 1.5;

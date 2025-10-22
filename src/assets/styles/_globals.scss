@@ -1,0 +1,244 @@
+@use './_tokens' as *;
+
+:root {
+  // Complete Miele Brand Colors
+  --m-primary: #{$m-primary};
+  --m-secondary: #{$m-secondary};
+  --m-success: #{$m-success};
+  --m-info: #{$m-info};
+  --m-warning: #{$m-warning};
+  --m-danger: #{$m-danger};
+  
+  // Complete Gray Scale
+  --m-white: #{$m-white};
+  --m-black: #{$m-black};
+  --m-gray-100: #{$m-gray-100};
+  --m-gray-200: #{$m-gray-200};
+  --m-gray-300: #{$m-gray-300};
+  --m-gray-400: #{$m-gray-400};
+  --m-gray-500: #{$m-gray-500};
+  --m-gray-600: #{$m-gray-600};
+  --m-gray-700: #{$m-gray-700};
+  --m-gray-800: #{$m-gray-800};
+  --m-gray-900: #{$m-gray-900};
+  
+  // Semantic Colors
+  --m-body-color: #{$m-body-color};
+  --m-body-bg: #{$m-body-bg};
+  --m-link-color: #{$m-link-color};
+  --m-link-hover-color: #{$m-link-hover-color};
+  --m-border-color: #{$m-border-color};
+  --m-border-color-translucent: #{$m-border-color-translucent};
+  
+  // Background Variants
+  --m-primary-bg-subtle: #{$m-primary-bg-subtle};
+  --m-secondary-bg-subtle: #{$m-secondary-bg-subtle};
+  --m-success-bg-subtle: #{$m-success-bg-subtle};
+  --m-info-bg-subtle: #{$m-info-bg-subtle};
+  --m-warning-bg-subtle: #{$m-warning-bg-subtle};
+  --m-danger-bg-subtle: #{$m-danger-bg-subtle};
+  --m-tertiary-bg: #{$m-tertiary-bg};
+  
+  // Status Colors
+  --m-in-progress: #{$m-in-progress};
+  --m-completed: #{$m-completed};
+  --m-cancelled: #{$m-cancelled};
+  --m-failure: #{$m-failure};
+  
+  // Complete Spacing System
+  --m-space-1: #{$space-1};
+  --m-space-2: #{$space-2};
+  --m-space-3: #{$space-3};
+  --m-space-4: #{$space-4};
+  --m-space-5: #{$space-5};
+  --m-space-6: #{$space-6};
+  --m-space-7: #{$space-7};
+  
+  // Complete Border Radius System
+  --m-radius-sm: #{$radius-sm};
+  --m-radius-base: #{$radius-base};
+  --m-radius-lg: #{$radius-lg};
+  --m-radius-xl: #{$radius-xl};
+  --m-radius-xxl: #{$radius-xxl};
+  --m-radius-pill: #{$radius-pill};
+  
+  // Complete Shadow System
+  --m-shadow-sm: #{$shadow-sm};
+  --m-shadow-base: #{$shadow-base};
+  --m-shadow-lg: #{$shadow-lg};
+  --m-shadow-inset: #{$shadow-inset};
+  
+  // Focus System
+  --m-focus-ring-width: #{$focus-ring-width};
+  --m-focus-ring-color: #{$focus-ring-color};
+  
+  // Typography System
+  --m-font-family: #{$font-family};
+  --m-body-font-size: #{$body-font-size};
+  --m-body-font-weight: #{$body-font-weight};
+  --m-body-line-height: #{$body-line-height};
+}
+
+// Enhanced Utility Classes using all tokens
+.miele-card {
+  border-radius: var(--m-radius-base);
+  box-shadow: var(--m-shadow-base);
+  background: var(--m-body-bg);
+  border: 1px solid var(--m-border-color);
+  padding: var(--m-space-4);
+  
+  &:hover {
+    box-shadow: var(--m-shadow-lg);
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
+  }
+}
+
+.miele-card-subtle {
+  border-radius: var(--m-radius-base);
+  box-shadow: var(--m-shadow-sm);
+  background: var(--m-tertiary-bg);
+  border: 1px solid var(--m-border-color);
+  padding: var(--m-space-3);
+}
+
+// Status Cards
+.miele-card-success {
+  background: var(--m-success-bg-subtle);
+  border-color: var(--m-success);
+  border-left: 4px solid var(--m-success);
+}
+
+.miele-card-info {
+  background: var(--m-info-bg-subtle);
+  border-color: var(--m-info);
+  border-left: 4px solid var(--m-info);
+}
+
+.miele-card-warning {
+  background: var(--m-warning-bg-subtle);
+  border-color: var(--m-warning);
+  border-left: 4px solid var(--m-warning);
+}
+
+.miele-card-danger {
+  background: var(--m-danger-bg-subtle);
+  border-color: var(--m-danger);
+  border-left: 4px solid var(--m-danger);
+}
+
+// Enhanced Button System
+.miele-btn-primary {
+  background-color: var(--m-primary);
+  border: 1px solid var(--m-primary);
+  color: var(--m-white);
+  border-radius: var(--m-radius-base);
+  padding: var(--m-space-2) var(--m-space-4);
+  font-family: var(--m-font-family);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: var(--m-link-hover-color);
+    border-color: var(--m-link-hover-color);
+    transform: translateY(-1px);
+    box-shadow: var(--m-shadow-base);
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 var(--m-focus-ring-width) var(--m-focus-ring-color);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.miele-btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--m-border-color);
+  color: var(--m-body-color);
+  border-radius: var(--m-radius-base);
+  padding: var(--m-space-2) var(--m-space-4);
+  font-family: var(--m-font-family);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: var(--m-tertiary-bg);
+    border-color: var(--m-primary);
+    color: var(--m-primary);
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 var(--m-focus-ring-width) var(--m-focus-ring-color);
+  }
+}
+
+// Status Indicators
+.miele-status-in-progress {
+  color: var(--m-in-progress);
+  background: var(--m-success-bg-subtle);
+  padding: var(--m-space-1) var(--m-space-2);
+  border-radius: var(--m-radius-pill);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.miele-status-completed {
+  color: var(--m-completed);
+  background: var(--m-secondary-bg-subtle);
+  padding: var(--m-space-1) var(--m-space-2);
+  border-radius: var(--m-radius-pill);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.miele-status-cancelled {
+  color: var(--m-cancelled);
+  background: var(--m-secondary-bg-subtle);
+  padding: var(--m-space-1) var(--m-space-2);
+  border-radius: var(--m-radius-pill);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.miele-status-failure {
+  color: var(--m-failure);
+  background: var(--m-danger-bg-subtle);
+  padding: var(--m-space-1) var(--m-space-2);
+  border-radius: var(--m-radius-pill);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+// Spacing Utilities
+.m-p-1 { padding: var(--m-space-1); }
+.m-p-2 { padding: var(--m-space-2); }
+.m-p-3 { padding: var(--m-space-3); }
+.m-p-4 { padding: var(--m-space-4); }
+.m-p-5 { padding: var(--m-space-5); }
+.m-p-6 { padding: var(--m-space-6); }
+.m-p-7 { padding: var(--m-space-7); }
+
+.m-m-1 { margin: var(--m-space-1); }
+.m-m-2 { margin: var(--m-space-2); }
+.m-m-3 { margin: var(--m-space-3); }
+.m-m-4 { margin: var(--m-space-4); }
+.m-m-5 { margin: var(--m-space-5); }
+.m-m-6 { margin: var(--m-space-6); }
+.m-m-7 { margin: var(--m-space-7); }
+
+// Typography Utilities
+.miele-text-primary { color: var(--m-primary); }
+.miele-text-body { color: var(--m-body-color); }
+.miele-text-success { color: var(--m-success); }
+.miele-text-info { color: var(--m-info); }
+.miele-text-warning { color: var(--m-warning); }
+.miele-text-danger { color: var(--m-danger); }
