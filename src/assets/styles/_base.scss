@@ -1,0 +1,29 @@
+// Box model reset for consistent layouts
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Global layout setup
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+// Enhanced body styling with Material typography integration
+body {
+  font-family: var(--m-font-family);
+  font-size: var(--m-body-font-size);
+  font-weight: var(--m-body-font-weight);
+  line-height: var(--m-body-line-height);
+  color: var(--m-body-color);
+  background: var(--m-body-bg);
+  
+  // Enhanced font rendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}

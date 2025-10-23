@@ -1,0 +1,23 @@
+<footer>
+  <mat-toolbar role="contentinfo" aria-label="Page navigation actions">
+    <button
+      matButton="outlined"
+      type="button"
+      aria-label="Go back to previous step"
+      title="Navigate to the previous page"
+      (click)="onNavigateBack()"
+    >
+      <mat-icon aria-hidden="true">arrow_back</mat-icon>
+      back
+    </button>
+    <button
+      type="button"
+      matButton="filled"
+      aria-label="Start new laundry cycle"
+      title="Begin a new washing or drying cycle"
+      (click)="onStartCycle()"
+    >
+      start new cycle
+    </button>
+  </mat-toolbar>
+</footer>

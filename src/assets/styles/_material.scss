@@ -1,0 +1,23 @@
+// Angular Material core setup with full theming support
+@use '@angular/material' as mat;
+@use './_tokens' as tokens;
+@use './_theme-colors' as miele-theme-colors;
+
+@include mat.core();
+
+$miele-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: miele-theme-colors.$primary-palette,
+    tertiary: miele-theme-colors.$tertiary-palette,
+  ),
+  typography: (
+    plain-family: tokens.$font-family,
+    brand-family: tokens.$font-family,
+  ),
+  density: (
+    scale: 0,
+  ),
+));
+
+@include mat.all-component-themes($miele-theme);
