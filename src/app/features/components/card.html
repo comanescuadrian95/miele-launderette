@@ -1,23 +1,46 @@
-<mat-card class="example-card" appearance="outlined">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+<mat-card class="cycle-card" appearance="outlined">
+  <mat-card-header class="cycle-header">
+    <div class="header-left">
+      <mat-icon class="machine-icon" aria-hidden="true">local_laundry_service</mat-icon>
+
+      <div class="title-wrap">
+        <mat-card-title>Big washing machine</mat-card-title>
+        <mat-card-subtitle>Washer</mat-card-subtitle>
+      </div>
+    </div>
+
+    <mat-chip-set>
+      <mat-chip class="status failure" appearance="outlined">failure</mat-chip>
+    </mat-chip-set>
   </mat-card-header>
-  <img
-    mat-card-image
-    src="https://material.angular.dev/assets/img/examples/shiba2.jpg"
-    alt="Photo of a Shiba Inu"
-  />
-  <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
+
+  <mat-card-content class="cycle-body">
+    <section class="details">
+      <dl class="kv">
+        <div class="row">
+          <dt>Started</dt><dd>25 Nov 2024, 12:01</dd>
+        </div>
+        <div class="row">
+          <dt>Stopped</dt><dd>25 Nov 2024, 13:01</dd>
+        </div>
+        <div class="row">
+          <dt>User</dt><dd>alex</dd>
+        </div>
+        <div class="row clamp">
+          <dt>User agent</dt>
+          <dd title="iOS; iPhone XS; Version 13.3 (Build 17C45)) CFNetwork/1121.2.1 Darvin/19.3.0">
+            iOS; iPhone XS; Version 13.3 (Build 17C45)) CFNetwork/1121.2.1 Darvin/19.3.0
+          </dd>
+        </div>
+        <div class="row meta"><dt>Device ID</dt><dd>48565</dd></div>
+        <div class="row meta"><dt>Cycle ID</dt><dd>1</dd></div>
+        <div class="row"><dt>Invoice</dt><dd>(0 lines)</dd></div>
+      </dl>
+    </section>
+
+    <aside class="totals">
+      <div class="total-label">Total</div>
+      <div class="total-value danger">€ 0.00</div>
+    </aside>
   </mat-card-content>
-  <mat-card-actions>
-    <button matButton>LIKE</button>
-    <button matButton>SHARE</button>
-  </mat-card-actions>
 </mat-card>

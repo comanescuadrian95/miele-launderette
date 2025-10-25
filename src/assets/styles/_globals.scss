@@ -106,7 +106,6 @@
   --m-body-font-weight: 400;
   --m-body-line-height: 1.5;
 
-
   // Computed spacing using SCSS calculations
   --m-space-xs: #{$base-spacing * 0.5}; // 4px
   --m-space-sm: #{$base-spacing}; // 8px
@@ -114,7 +113,7 @@
   --m-space-lg: #{$base-spacing * 3}; // 24px
   --m-space-xl: #{$base-spacing * 4}; // 32px
 
-  // Toolbar 
+  // Toolbar
   --toolbar-bg: #1f1f1f;
 
   // Global Button Styles
@@ -174,6 +173,22 @@
   )
 );
 
+@include mat.card-overrides((
+  outlined-container-color: var(--m-gray-100),
+  outlined-outline-color: var(--m-gray-300),
+));
+
+@include mat.tabs-overrides(
+  (
+    active-focus-indicator-color: #f59b00,
+    active-focus-label-text-color: #f59b00,
+    active-indicator-color: #f59b00,
+    active-label-text-color: #f59b00,
+    label-text-size: 1rem,
+    label-text-weight: 500,
+  )
+);
+
 // ===================================================================
 // REUSABLE LAYOUT COMPONENTS
 // ===================================================================
@@ -184,37 +199,37 @@
   padding: var(--m-space-4);
   width: 100%;
   max-width: 100%;
-  
+
   @media (min-width: #{$breakpoint-sm}) {
     padding: var(--m-space-4);
     max-width: 540px;
   }
-  
+
   @media (min-width: #{$breakpoint-md}) {
     padding: var(--m-space-4);
     max-width: 720px;
   }
-  
+
   @media (min-width: #{$breakpoint-lg}) {
     padding: var(--m-space-5);
     max-width: 960px;
   }
-  
+
   @media (min-width: #{$breakpoint-xl}) {
     padding: var(--m-space-5);
     max-width: 1200px;
   }
-  
+
   @media (min-width: #{$breakpoint-xxl}) {
     padding: var(--m-space-6);
     max-width: 1400px;
   }
-  
+
   @media (min-width: #{$breakpoint-qhd}) {
     padding: var(--m-space-6);
     max-width: 1800px;
   }
-  
+
   @media (min-width: #{$breakpoint-uhd}) {
     padding: var(--m-space-7);
     max-width: 2400px;

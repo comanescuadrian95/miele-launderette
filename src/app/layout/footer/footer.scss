@@ -19,5 +19,9 @@
         --mat-button-outlined-outline-color: transparent;
       }
     }
+
+    [matButton="filled"]{
+      margin-left: auto;
+    }
   }
 }
