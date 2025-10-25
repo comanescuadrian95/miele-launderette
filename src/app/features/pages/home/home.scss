@@ -1,0 +1,209 @@
+@use '../../../../assets/styles/tokens' as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+
+  .miele-landing-page {
+    position: relative;
+    min-height: 70vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  figure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .landing-page-overlay {
+    position: relative;
+    z-index: var(--m-z-base);
+    text-align: center;
+    color: var(--m-white);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 8px;
+    backdrop-filter: blur(2px);
+
+    h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    }
+
+    [matButton='outlined'] {
+      --mat-button-outlined-state-layer-color: var(--m-white);
+      --mat-button-outlined-outline-color: var(--m-white);
+      --mat-button-outlined-label-text-color: var(--m-white);
+
+      &:hover {
+        --mat-button-outlined-outline-color: var(--m-white);
+        --mat-button-outlined-outline-color: transparent;
+      }
+    }
+  }
+
+  .cta-button {
+    font-size: 1.1rem;
+    padding: 0.75rem 2rem;
+  }
+
+  .scroll-down-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ff8c00; // Orange color
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
+    transition: all 0.3s ease;
+    color: white;
+    position: relative;
+    z-index: 101;
+    pointer-events: auto;
+
+    &:hover {
+      background-color: #ff7700;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255, 140, 0, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    mat-icon {
+      font-size: 1.5rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  .cycle-section {
+    position: relative;
+    background: var(--m-surface-variant);
+    padding: 8rem 2rem;
+    text-align: center;
+
+    .cycle-content {
+      max-width: 800px;
+      margin: 0 auto;
+
+      h2 {
+        font-size: 1rem;
+        text-transform: uppercase;
+        margin-bottom: 1.25rem;
+        color: #0009;
+        font-weight: 700;
+      }
+
+      p {
+        color: var(--m-on-surface);
+        font-size: var(--m-headline-large-size);
+        font-weight: var(--m-headline-large-weight);
+        line-height: var(--m-headline-large-line-height);
+        margin-bottom: var(--m-space-6);
+
+        strong {
+          font-weight: var(--m-headline-large-weight);
+        }
+      }
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      pointer-events: auto;
+    }
+  }
+
+  .services-section {
+    padding: 6rem 2rem 4rem; // Extra top padding to account for the button
+    background: #eae8e4;
+
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #333;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    mat-icon {
+      font-size: 3rem;
+      width: 3rem;
+      height: 3rem;
+      color: #ff8c00;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #666;
+      line-height: 1.5;
+    }
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+}

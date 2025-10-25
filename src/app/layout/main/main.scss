@@ -1,5 +1,4 @@
 @use '../../../assets/styles/_tokens' as *;
-@use '@angular/material' as mat;
 
 main {
   flex: 1;
@@ -7,48 +6,18 @@ main {
   flex-direction: column;
   overflow: auto;
   background: var(--m-body-bg);
-  height: calc(100vh - 10rem); // Adjust based on header/footer height
+  height: calc(100vh - 10rem);
   
-  .content-wrapper {
-    flex: 1;
-    margin: 0 auto;
-    padding: var(--m-space-4);
-    width: 100%;
-    max-width: 100%;
+  .skip-link-target {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
     
-    @media (min-width: #{$breakpoint-sm}) {
-      padding: var(--m-space-4);
-      max-width: 540px;
-    }
-    
-    @media (min-width: #{$breakpoint-md}) {
-      padding: var(--m-space-4);
-      max-width: 720px;
-    }
-    
-    @media (min-width: #{$breakpoint-lg}) {
-      padding: var(--m-space-5);
-      max-width: 960px;
-    }
-    
-    @media (min-width: #{$breakpoint-xl}) {
-      padding: var(--m-space-5);
-      max-width: 1200px;
-    }
-    
-    @media (min-width: #{$breakpoint-xxl}) {
-      padding: var(--m-space-6);
-      max-width: 1400px;
-    }
-    
-    @media (min-width: #{$breakpoint-qhd}) {
-      padding: var(--m-space-6);
-      max-width: 1800px;
-    }
-    
-    @media (min-width: #{$breakpoint-uhd}) {
-      padding: var(--m-space-7);
-      max-width: 2400px;
+    &:focus {
+      position: static;
+      width: auto;
+      height: auto;
     }
   }
 }

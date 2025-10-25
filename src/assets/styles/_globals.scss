@@ -165,3 +165,58 @@
     )
   );
 }
+
+@include mat.fab-overrides(
+  (
+    container-shape: 50%,
+    container-color: var(--m-primary),
+    foreground-color: var(--m-black),
+  )
+);
+
+// ===================================================================
+// REUSABLE LAYOUT COMPONENTS
+// ===================================================================
+
+.content-wrapper {
+  flex: 1;
+  margin: 0 auto;
+  padding: var(--m-space-4);
+  width: 100%;
+  max-width: 100%;
+  
+  @media (min-width: #{$breakpoint-sm}) {
+    padding: var(--m-space-4);
+    max-width: 540px;
+  }
+  
+  @media (min-width: #{$breakpoint-md}) {
+    padding: var(--m-space-4);
+    max-width: 720px;
+  }
+  
+  @media (min-width: #{$breakpoint-lg}) {
+    padding: var(--m-space-5);
+    max-width: 960px;
+  }
+  
+  @media (min-width: #{$breakpoint-xl}) {
+    padding: var(--m-space-5);
+    max-width: 1200px;
+  }
+  
+  @media (min-width: #{$breakpoint-xxl}) {
+    padding: var(--m-space-6);
+    max-width: 1400px;
+  }
+  
+  @media (min-width: #{$breakpoint-qhd}) {
+    padding: var(--m-space-6);
+    max-width: 1800px;
+  }
+  
+  @media (min-width: #{$breakpoint-uhd}) {
+    padding: var(--m-space-7);
+    max-width: 2400px;
+  }
+}

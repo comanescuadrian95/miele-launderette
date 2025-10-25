@@ -1,0 +1,6 @@
+@use "../../../../assets/styles/_tokens" as *;
+
+:host {
+  display: block;
+  padding: var(--m-space-lg);
+}

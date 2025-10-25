@@ -1,0 +1,85 @@
+<!-- <h2 class="page-title-content">Monitor your laundry cycles efficiently.</h2>
+  <p class="page-description">
+    Keep track of all active and completed washing cycles in one place. View progress, status
+    updates, and machine availability in real time to optimize your workflow and ensure seamless
+    operation across your entire laundry process.
+  </p> -->
+
+<section class="miele-landing-page" role="region" aria-labelledby="landing-miele-launderette">
+  <figure aria-hidden="true">
+    <img
+      src="assets/images/miele-laundry-930.jpeg"
+      loading="eager"
+      width="930"
+      height="auto"
+      aria-hidden="true"
+    />
+  </figure>
+
+  <div class="landing-page-overlay">
+    <h1>Miele Launderette</h1>
+    <p>Premium laundry services with professional-grade equipment</p>
+    <button
+      type="button"
+      matButton="outlined"
+      aria-label="Start new laundry cycle"
+      title="Begin a new washing or drying cycle"
+    >
+      start new cycle
+    </button>
+  </div>
+</section>
+
+<section class="cycle-section">
+  <div class="cycle-content">
+    <h2>Check your laundry cycles in real-time</h2>
+    <p>
+      Your digital solution for efficient machine, data and process management. You could monitor
+      your laundry cycles,
+      <strong>receive real-time updates, and optimize</strong> your workflow. Never been
+      <strong>easier</strong> to stay informed and in control of your laundry operations.
+    </p>
+    <button
+      matButton="filled"
+      type="button"
+      aria-label="Check your laundry cycles"
+      title="Check out your active laundry cycles"
+    >
+      Check Active Cycles
+    </button>
+  </div>
+
+  <div class="scroll-indicator">
+    <button
+      matFab
+      aria-label="Scroll to next section"
+      title="Scroll down to see our services"
+      (click)="scrollToNextSection()"
+    >
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+  </div>
+</section>
+
+<section id="next-section" class="services-section">
+  <h2>Our Services</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <mat-icon>schedule</mat-icon>
+      <h3>24/7 Service</h3>
+      <p>Available around the clock for your convenience</p>
+    </div>
+
+    <div class="service-card">
+      <mat-icon>eco</mat-icon>
+      <h3>Eco-Friendly</h3>
+      <p>Environmentally conscious cleaning solutions</p>
+    </div>
+
+    <div class="service-card">
+      <mat-icon>star</mat-icon>
+      <h3>Premium Quality</h3>
+      <p>Professional-grade Miele equipment</p>
+    </div>
+  </div>
+</section>
