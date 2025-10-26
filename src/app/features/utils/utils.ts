@@ -1,9 +1,6 @@
 import { Device } from '../models/device.model';
 import { Tariff } from '../models/tariff.mode';
 
-export function getCycleStartDate(cycle: { startedAt: string }): Date {
-  return new Date(cycle.startedAt);
-}
 
 export function formatCycleDate(dateString: string, locale = 'en-GB'): string {
   const date = new Date(dateString);

@@ -1,4 +1,4 @@
-export type DeviceType = "washer" | "dryer";
+export type DeviceType = "washer" | "dryer" | "unknown";
 
 export interface Device {
   type: DeviceType;

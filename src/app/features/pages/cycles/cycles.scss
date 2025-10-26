@@ -1,62 +1,62 @@
-@use "../../../../assets/styles/_tokens" as *;
+@use '../../../../assets/styles/_tokens' as *;
 
 :host {
   display: block;
   padding: var(--m-space-lg);
 
   .cycles-tabs {
-  position: sticky;
-  top: 64px; /* adjust to your toolbar height */
-  z-index: var(--m-z-sticky);
-  background: var(--m-body-bg);
-  margin-bottom: var(--m-space-md);
+    position: sticky;
+    top: 64px; /* adjust to your toolbar height */
+    z-index: var(--m-z-sticky);
+    background: var(--m-body-bg);
+    margin-bottom: var(--m-space-md);
 
-  .mat-mdc-tab-header {
-    border-bottom: 1px solid var(--m-gray-200);
+    .mat-mdc-tab-header {
+      border-bottom: 1px solid var(--m-gray-200);
+    }
+
+    /* active indicator = Miele gold */
+    .mdc-tab-indicator__content--underline {
+      border-color: var(--m-primary) !important;
+    }
+
+    /* tab label colors */
+    .mdc-tab__text-label {
+      color: var(--m-gray-700);
+    }
+    .mdc-tab--active .mdc-tab__text-label {
+      color: var(--m-body-color);
+      font-weight: 600;
+    }
   }
 
-  /* active indicator = Miele gold */
-  .mdc-tab-indicator__content--underline {
-    border-color: var(--m-primary) !important;
+  /* Responsive grid for cards */
+  .cycles-grid {
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: repeat(auto-fit, minmax(560px, 1fr));
+    gap: var(--m-space-lg);
+    align-items: start;
+
+    /* Narrow screens: single column */
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+      gap: var(--m-space-md);
+    }
   }
 
-  /* tab label colors */
-  .mdc-tab__text-label {
-    color: var(--m-gray-700);
+  /* Optional: make each mat-tab body match the page bg */
+  .mat-mdc-tab-body-content {
+    background: var(--m-tertiary-bg);
+    padding-block: var(--m-space-lg);
   }
-  .mdc-tab--active .mdc-tab__text-label {
-    color: var(--m-body-color);
-    font-weight: 600;
+
+  /* Optional: tune card width/center if you want fewer columns on very wide screens */
+  .cycle-card {
+    max-width: 1040px; /* keep cards from becoming too wide */
+    margin-inline: auto;
+    box-shadow: var(--m-shadow-sm);
+    border-radius: var(--m-radius-lg);
+    background: var(--m-body-bg);
   }
-}
-
-/* Responsive grid for cards */
-.cycles-grid {
-  display: grid;
-  overflow: hidden;
-  grid-template-columns: repeat(auto-fit, minmax(560px, 1fr));
-  gap: var(--m-space-lg);
-  align-items: start;
-
-  /* Narrow screens: single column */
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
-    gap: var(--m-space-md);
-  }
-}
-
-/* Optional: make each mat-tab body match the page bg */
-.mat-mdc-tab-body-content {
-  background: var(--m-tertiary-bg);
-  padding-block: var(--m-space-lg);
-}
-
-/* Optional: tune card width/center if you want fewer columns on very wide screens */
-.cycle-card {
-  max-width: 1040px;            /* keep cards from becoming too wide */
-  margin-inline: auto;
-  box-shadow: var(--m-shadow-sm);
-  border-radius: var(--m-radius-lg);
-  background: var(--m-body-bg);
-}
 }
