@@ -1,10 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { Main, Header, Footer } from './layout';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
-  imports: [Main, Header, Footer, HttpClientModule],
+  imports: [Main, Header, Footer],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

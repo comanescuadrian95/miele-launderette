@@ -27,8 +27,9 @@ export class Footer {
     }
   );
 
-  protected readonly showBackButton = computed(() => ['/cycles', '/start-cycle'].includes(this.currentUrl()));
-  protected readonly showStartCycleButton = computed(() => this.currentUrl() !==  '/start-cycle');
+  protected readonly showBackButton = computed(() => ['/cycles-list', '/start-cycle'].includes(this.currentUrl()));
+  protected readonly showStartCycleButton = computed(() => this.currentUrl() !== '/start-cycle');
+  protected readonly showCheckCyclesButton = computed(() => this.currentUrl() !== '/cycles-list');
 
   protected onNavigateBack(): void {
     this._router.navigate(['/home']);
@@ -36,5 +37,9 @@ export class Footer {
 
   protected onStartCycle(): void {
     this._router.navigate(['/start-cycle']);
+  }
+
+  protected checkCycles(): void {
+    this._router.navigate(['/cycles-list']);
   }
 }

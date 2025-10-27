@@ -6,7 +6,7 @@
         <mat-card-subtitle>{{ cycle()?.DeviceType }}</mat-card-subtitle>
       </div>
       <mat-chip-set>
-        <mat-chip [attr.data-status]="cycle()?.status" >{{ cycle()?.status }}</mat-chip>
+        <mat-chip [attr.data-status]="cycle()?.status">{{ cycle()?.status }}</mat-chip>
       </mat-chip-set>
     </div>
 
@@ -40,16 +40,23 @@
           <dt>Device ID</dt>
           <dd>{{ cycle()?.deviceId }}</dd>
         </div>
-        <div class="row">
-          <dt>Invoice</dt>
-          <dd>({{ cycle()?.invoiceLines?.length }} lines)</dd>
-        </div>
       </dl>
     </section>
 
-    <aside class="totals">
-      <div class="total-label">Total</div>
-      <div class="total-value danger">€ {{ cycle()?.price | number : '1.2-2' }}</div>
-    </aside>
+    <section class="footer">
+      <button
+        matButton="outlined"
+        type="button"
+        aria-label="See invoice details"
+        title="See invoice details"
+        (click)="onCheckInvoiceDetails()"
+      >
+        Invoice Details
+      </button>
+      <div class="totals">
+        <div class="total-label">Total</div>
+        <div class="total-value danger">€ {{ cycle()?.price | number : '1.2-2' }}</div>
+      </div>
+    </section>
   </mat-card-content>
 </mat-card>

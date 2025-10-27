@@ -27,7 +27,7 @@
   margin-inline: auto;
   border-radius: var(--m-radius-lg);
   box-shadow: var(--m-shadow-sm);
-  min-height: 450px;
+  min-height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: stretch;
@@ -92,9 +92,20 @@
   }
 }
 
+@media (max-width: #{$breakpoint-md}) {
+  .cycle-card {
+    max-width: 100%;
+    margin-inline: var(--m-space-sm);
+  }
+  .cycle-header {
+    flex-wrap: wrap;
+    gap: var(--m-space-xs);
+  }
+}
+
 .cycle-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--m-space-lg);
   padding: var(--m-space-lg);
 
@@ -144,11 +155,17 @@
   }
 }
 
-.totals {
+.footer {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: var(--m-space-md);
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: end;
+
+  .totals {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
 
   .total-label {
     color: var(--m-gray-600);
@@ -163,25 +180,7 @@
     }
   }
 
-  .actions {
-    display: flex;
-    gap: var(--m-space-sm);
-    flex-wrap: wrap;
-
-    @media (max-width: #{$breakpoint-md}) {
-      width: 100%;
-      justify-content: flex-start;
-    }
-  }
-}
-
-@media (max-width: #{$breakpoint-md}) {
-  .cycle-card {
-    max-width: 100%;
-    margin-inline: var(--m-space-sm);
-  }
-  .cycle-header {
-    flex-wrap: wrap;
-    gap: var(--m-space-xs);
+  button{
+    margin-right: auto;
   }
 }

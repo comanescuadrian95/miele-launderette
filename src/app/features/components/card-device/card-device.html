@@ -10,7 +10,7 @@
       <mat-card-subtitle>{{ device()?.type }}</mat-card-subtitle>
       <mat-radio-button
         [checked]="selected()"
-        (click)="$event.stopPropagation()"
+        (click)="$event.preventDefault()"
       ></mat-radio-button>
     </mat-card-title-group>
   </mat-card-header>

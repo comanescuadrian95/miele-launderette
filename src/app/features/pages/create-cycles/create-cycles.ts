@@ -11,6 +11,8 @@ import { MatIcon } from '@angular/material/icon';
 import { getEnhancedDevice } from '../../utils/utils';
 import { CardDevice } from '../../components/card-device/card-device';
 import { DeviceEnhanced } from '../../models/device.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-cycles',
@@ -30,6 +32,8 @@ import { DeviceEnhanced } from '../../models/device.model';
   styleUrl: './create-cycles.scss',
 })
 export class CreateCycles {
+  private _router = inject(Router);
+
   constructor() {
     effect(() => {
       this._apiService.dataBundler.reload();
@@ -61,8 +65,8 @@ export class CreateCycles {
 
   private _formBuilder = inject(FormBuilder);
   private _apiService = inject(ApiService);
+  private _snackBar = inject(MatSnackBar);
 
-  // Descriptive form groups and controls
   userStepForm = this._formBuilder.group({
     userId: [''],
   });
@@ -76,12 +80,49 @@ export class CreateCycles {
   submitStepperForm() {
     const userId = this.userStepForm.value.userId || 'unknown';
     const selectedDevice = this.deviceStepForm.value.selectedDevice;
+    const cycles = this._apiService.dataBundler.value()?.cycles ?? [];
+    const nextId =
+      cycles.length > 0 ? (Math.max(...cycles.map((c) => Number(c.id) || 0)) + 1).toString() : '1';
 
-    console.log('Stepper Form Data:', {
+    const now = new Date().toISOString();
+
+    if (!selectedDevice) {
+      this._snackBar.open('Error: No device selected.', 'Close', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+      });
+
+      return;
+    }
+
+    const cycle: Cycle = {
+      startedAt: now,
+      stoppedAt: now,
+      status: 'in-progress', // or set as needed
       userId,
-      selectedDevice, // This is the full device object
-    });
+      userAgent: navigator.userAgent,
+      deviceId: selectedDevice.id,
+      id: nextId,
+      invoiceLines: [],
+    };
 
-    // Here you would send the data to your API
+    this._apiService.postCycle(cycle).subscribe({
+      next: (cycle) => {
+        this._snackBar.open('Cycle created successfully!', 'Close', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+        });
+        this._router.navigate(['/cycles-list']);
+      },
+      error: () => {
+        this._snackBar.open('Error creating cycle. Please try again.', 'Close', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+        });
+      },
+    });
   }
 }

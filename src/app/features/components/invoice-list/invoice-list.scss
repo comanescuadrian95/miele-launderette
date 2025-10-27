@@ -1,0 +1,74 @@
+.invoice-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--m-space-xl);
+}
+
+.invoice-list-card {
+  min-width: 420px;
+  max-width: 600px;
+  background: var(--m-gray-100);
+  border-radius: var(--m-radius-lg);
+}
+
+mat-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--m-space-md);
+}
+
+mat-card-title {
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--m-black);
+  display: flex;
+  align-items: center;
+  gap: var(--m-space-md);
+}
+
+.invoice-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--m-space-md);
+}
+
+.invoice-item {
+  display: flex;
+  align-items: center;
+  gap: var(--m-space-md);
+  padding: var(--m-space-md) 0;
+
+}
+
+.invoice-icon {
+  font-size: 2rem;
+  color: var(--m-black);
+}
+
+.invoice-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.invoice-name {
+  font-weight: 500;
+  color: var(--m-black);
+  font-size: 1.08rem;
+}
+
+.invoice-price {
+  color: var(--m-black);
+  font-size: 1.02rem;
+}
+
+.no-invoices {
+  display: flex;
+  align-items: center;
+  gap: var(--m-space-md);
+  color: var(--m-black);
+  font-size: 1.08rem;
+  margin-top: var(--m-space-xl);
+  justify-content: center;
+}

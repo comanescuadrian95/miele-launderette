@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDivider } from '@angular/material/divider';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterOutlet } from '@angular/router';
 
 @Component({

@@ -1,2 +1,2 @@
-export { Cycles } from "./pages/cycles/cycles";
-export { Home } from "./pages/home/home";
+export { CyclesList } from './pages/cycles-list/cycles-list';
+export { Home } from './pages/home/home';

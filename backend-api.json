@@ -21,7 +21,7 @@
       "invoiceLines": [
         {
           "name": "Washing cycle",
-          "totalPrice": 2.50,
+          "totalPrice": 2.5,
           "currency": "EUR"
         }
       ]
@@ -37,7 +37,7 @@
       "invoiceLines": [
         {
           "name": "Washing cycle",
-          "totalPrice": 3.50,
+          "totalPrice": 3.5,
           "currency": "EUR"
         }
       ]
@@ -50,8 +50,7 @@
       "userAgent": "iOS; iPhone XS; Version 13.3 (Build 17C45)) CFNetwork/1121.2.1 Darvin/19.3.0",
       "deviceId": "48567",
       "id": "4",
-      "invoiceLines": [
-      ]
+      "invoiceLines": []
     },
     {
       "startedAt": "2024-09-27T10:01:24.329Z",
@@ -64,29 +63,99 @@
       "invoiceLines": [
         {
           "name": "Drying cycle",
-          "totalPrice": 1.50,
+          "totalPrice": 1.5,
           "currency": "EUR"
         }
       ]
+    },
+    {
+      "id": "6",
+      "startedAt": "2025-10-27T21:31:54.162Z",
+      "stoppedAt": "2025-10-27T21:31:54.162Z",
+      "status": "in-progress",
+      "userId": "alex",
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1 Edg/141.0.0.0",
+      "deviceId": "48567",
+      "invoiceLines": []
+    },
+    {
+      "id": "7",
+      "startedAt": "2025-10-27T21:35:04.208Z",
+      "stoppedAt": "2025-10-27T21:35:04.208Z",
+      "status": "in-progress",
+      "userId": "alex",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0",
+      "deviceId": "48565",
+      "invoiceLines": []
+    },
+    {
+      "id": "8",
+      "startedAt": "2025-10-27T21:35:45.053Z",
+      "stoppedAt": "2025-10-27T21:35:45.053Z",
+      "status": "in-progress",
+      "userId": "tester1995",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0",
+      "deviceId": "48111",
+      "invoiceLines": []
+    },
+    {
+      "id": "9",
+      "startedAt": "2025-10-27T21:36:27.526Z",
+      "stoppedAt": "2025-10-27T21:36:27.526Z",
+      "status": "in-progress",
+      "userId": "tester1995",
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1 Edg/141.0.0.0",
+      "deviceId": "48111",
+      "invoiceLines": []
+    },
+    {
+      "id": "10",
+      "startedAt": "2025-10-27T21:42:01.562Z",
+      "stoppedAt": "2025-10-27T21:42:01.562Z",
+      "status": "in-progress",
+      "userId": "Test user 1999",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0",
+      "deviceId": "48111",
+      "invoiceLines": []
+    },
+    {
+      "id": "11",
+      "startedAt": "2025-10-27T21:42:13.979Z",
+      "stoppedAt": "2025-10-27T21:42:13.979Z",
+      "status": "in-progress",
+      "userId": "michi",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0",
+      "deviceId": "48565",
+      "invoiceLines": []
+    },
+    {
+      "id": "12",
+      "startedAt": "2025-10-27T21:50:18.498Z",
+      "stoppedAt": "2025-10-27T21:50:18.498Z",
+      "status": "in-progress",
+      "userId": "unknown",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0",
+      "deviceId": "48567",
+      "invoiceLines": []
     }
   ],
   "tariffs": [
     {
       "id": "1",
       "name": "Big washing machine tariff",
-      "price": 3.50,
+      "price": 3.5,
       "currency": "EUR"
     },
     {
       "id": "2",
       "name": "Small washing machine tariff",
-      "price": 2.50,
+      "price": 2.5,
       "currency": "EUR"
     },
     {
       "id": "3",
       "name": "Drying tariff",
-      "price": 1.50,
+      "price": 1.5,
       "currency": "EUR"
     }
   ],

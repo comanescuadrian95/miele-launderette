@@ -20,8 +20,10 @@
       }
     }
 
-    [matButton="filled"]{
+    .action-buttons{
       margin-left: auto;
+      display: flex;
+      gap: var(--m-space-md);
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, OnInit, resource } from '@angular/core';
+import { Component, computed, effect, inject } from '@angular/core';
 import { MatTab, MatTabGroup } from '@angular/material/tabs';
 import { Card } from '../../components/card-cycle/card';
 import { ApiService } from '../../services/api.service';
@@ -6,13 +6,13 @@ import { Cycle, CycleEnhanced, CycleStatus } from '../../models/cycle.model';
 import { getEnhancedCycle } from '../../utils/utils';
 
 @Component({
-  selector: 'app-cycles',
+  selector: 'app-cycles-list',
   standalone: true,
   imports: [MatTabGroup, MatTab, Card],
-  templateUrl: './cycles.html',
-  styleUrl: './cycles.scss',
+  templateUrl: './cycles-list.html',
+  styleUrl: './cycles-list.scss',
 })
-export class Cycles {
+export class CyclesList {
   private _apiService = inject(ApiService);
 
   constructor() {
@@ -22,14 +22,12 @@ export class Cycles {
   }
 
   readonly tabs = [
+    { label: 'ACTIVE', cycles: computed(() => this._getEnhancedCycleByStatus('in-progress')) },
+    { label: 'HISTORY', cycles: computed(() => this._getEnhancedCycleByStatus('not-in-progress')) },
     { label: 'ALL', cycles: computed(() => this._getEnhancedCycleByStatus()) },
-    { label: 'IN PROGRESS', cycles: computed(() => this._getEnhancedCycleByStatus('in-progress')) },
-    { label: 'COMPLETED', cycles: computed(() => this._getEnhancedCycleByStatus('completed')) },
-    { label: 'CANCELLED', cycles: computed(() => this._getEnhancedCycleByStatus('cancelled')) },
-    { label: 'FAILED', cycles: computed(() => this._getEnhancedCycleByStatus('failure')) },
   ];
 
-  private _getEnhancedCycleByStatus(status?: CycleStatus): CycleEnhanced[] {
+  private _getEnhancedCycleByStatus(status?: string): CycleEnhanced[] {
     const cycles = this._apiService.dataBundler.value()?.cycles;
     const devices = this._apiService.dataBundler.value()?.devices;
     const tariffs = this._apiService.dataBundler.value()?.tariffs;
@@ -39,10 +37,17 @@ export class Cycles {
     }
 
     if (!status) {
+      // No status: return all
       return getEnhancedCycle(cycles, devices, tariffs);
     }
 
-    const filteredCycles = cycles?.filter((cycle: Cycle) => cycle.status === status);
+    let filteredCycles: Cycle[];
+
+    if (status === 'in-progress') {
+      filteredCycles = cycles.filter((cycle: Cycle) => cycle.status === 'in-progress');
+    } else {
+      filteredCycles = cycles.filter((cycle: Cycle) => cycle.status !== 'in-progress');
+    }
 
     return getEnhancedCycle(filteredCycles, devices, tariffs);
   }

@@ -173,10 +173,12 @@
   )
 );
 
-@include mat.card-overrides((
-  outlined-container-color: var(--m-gray-100),
-  outlined-outline-color: var(--m-gray-300),
-));
+@include mat.card-overrides(
+  (
+    outlined-container-color: var(--m-gray-100),
+    outlined-outline-color: var(--m-gray-300),
+  )
+);
 
 @include mat.tabs-overrides(
   (
@@ -189,6 +191,28 @@
   )
 );
 
+@include mat.stepper-overrides(
+  (
+    header-edit-state-icon-foreground-color: var(--m-white),
+    header-edit-state-icon-background-color: #f59b00,
+    header-icon-background-color: #f59b00,
+    header-selected-state-icon-background-color: #f59b00,
+    header-selected-state-icon-foreground-color: var(--m-white),
+    header-icon-foreground-color: var(--m-white),
+    header-label-text-size: 1rem,
+    header-selected-state-label-text-size: 1.2rem,
+    header-label-text-weight: 500,
+    line-color: var(--m-gray-300),
+  )
+);
+
+@include mat.radio-overrides(
+  (
+    selected-icon-color: #f59b00,
+    selected-pressed-icon-color: #f59b00,
+    selected-focus-icon-color: #f59b00,
+  )
+);
 // ===================================================================
 // REUSABLE LAYOUT COMPONENTS
 // ===================================================================

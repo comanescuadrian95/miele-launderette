@@ -13,16 +13,28 @@
     </button>
     }
 
-    @if(showStartCycleButton()){
-    <button
-      type="button"
-      matButton="filled"
-      aria-label="Start new laundry cycle"
-      title="Begin a new washing or drying cycle"
-      (click)="onStartCycle()"
-    >
-      start new cycle
-    </button>
-    }
+    <section class="action-buttons">
+      @if(showCheckCyclesButton()){
+      <button
+        type="button"
+        matButton="filled"
+        aria-label="Check existing laundry cycles"
+        title="View current washing or drying cycles"
+        (click)="checkCycles()"
+      >
+        check cycles
+      </button>
+      } @if(showStartCycleButton()){
+      <button
+        type="button"
+        matButton="filled"
+        aria-label="Start new laundry cycle"
+        title="Begin a new washing or drying cycle"
+        (click)="onStartCycle()"
+      >
+        start new cycle
+      </button>
+      }
+    </section>
   </mat-toolbar>
 </footer>
