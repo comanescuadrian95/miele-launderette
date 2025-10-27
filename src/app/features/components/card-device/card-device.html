@@ -1,0 +1,23 @@
+<mat-card
+  appearance="outlined"
+  class="card-device-content"
+  [class.selected]="selected()"
+  (click)="selectDevice()"
+>
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>{{ device()?.name }}</mat-card-title>
+      <mat-card-subtitle>{{ device()?.type }}</mat-card-subtitle>
+      <mat-radio-button
+        [checked]="selected()"
+        (click)="$event.stopPropagation()"
+      ></mat-radio-button>
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Service Cost: {{ device()?.price }} {{ device()?.currency }}</p>
+    <small class="device-note">
+      All prices include VAT. Our products are eco-friendly.
+    </small>
+  </mat-card-content>
+</mat-card>

@@ -7,9 +7,3 @@ export type DataBundle = {
     devices: Device[];
     tariffs: Tariff[];
 }
-
-export const EMPTY: DataBundle = {
-    cycles: [],
-    devices: [],
-    tariffs: []
-};

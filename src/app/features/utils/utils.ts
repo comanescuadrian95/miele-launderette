@@ -1,20 +1,46 @@
+import { Cycle, CycleEnhanced } from '../models/cycle.model';
 import { Device } from '../models/device.model';
 import { Tariff } from '../models/tariff.mode';
 
+export function getEnhancedDevice(devices: Device[] | undefined, tariffs: Tariff[] | undefined) {
+  if (!devices) {
+    return [];
+  }
 
-export function formatCycleDate(dateString: string, locale = 'en-GB'): string {
-  const date = new Date(dateString);
+  return devices.map((device) => {
+    const tariff: Tariff | undefined = tariffs?.find(
+      (tariff) => tariff.id === String(device.tariffId)
+    );
 
-  return date.toLocaleDateString(locale, {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: true,
+    return {
+      ...device,
+      price: tariff?.price ?? 0,
+      currency: tariff?.currency ?? 'N/A',
+    };
   });
 }
 
-function findTariffForDevice(device: Device, tariffs: Tariff[]): Tariff | undefined {
-  return tariffs.find((tariff) => String(tariff.id) === String(device.tariffId));
+export function getEnhancedCycle(
+  cycles: Cycle[] | undefined,
+  devices: Device[] | undefined,
+  tariffs: Tariff[] | undefined
+): CycleEnhanced[] {
+  if (!cycles) {
+    return [];
+  }
+
+  return cycles.map((cycle) => {
+    const device: Device | undefined = devices?.find((device) => device.id === cycle.deviceId);
+    const tariff: Tariff | undefined = tariffs?.find(
+      (tariff) => tariff.id === String(device?.tariffId)
+    );
+
+    return {
+      ...cycle,
+      DeviceName: device?.name ?? 'Unknown Device',
+      DeviceType: device?.type ?? 'unknown',
+      price: tariff?.price ?? 0,
+      currency: tariff?.currency ?? 'N/A',
+    };
+  });
 }

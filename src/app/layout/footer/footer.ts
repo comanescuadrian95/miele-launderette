@@ -28,6 +28,7 @@ export class Footer {
   );
 
   protected readonly showBackButton = computed(() => ['/cycles', '/start-cycle'].includes(this.currentUrl()));
+  protected readonly showStartCycleButton = computed(() => this.currentUrl() !==  '/start-cycle');
 
   protected onNavigateBack(): void {
     this._router.navigate(['/home']);

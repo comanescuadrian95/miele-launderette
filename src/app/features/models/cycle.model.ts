@@ -1,6 +1,5 @@
-import { Device, DeviceType } from './device.model';
+import { DeviceType } from './device.model';
 import { Invoice } from './invoice.model';
-import { Tariff } from './tariff.mode';
 
 export type CycleStatus = 'failure' | 'in-progress' | 'completed' | 'cancelled';
 

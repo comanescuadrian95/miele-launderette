@@ -1,49 +1,15 @@
 <section class="content-wrapper" aria-live="polite">
-  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" dynamicHeight >
-    <mat-tab label="ALL">
-      <div class="cycles-grid">
-        @for(cycle of cycles(); track cycle.id){
-        <app-card [cycle]="cycle"></app-card>
-        }@empty{
-        <p>No cycles found.</p>
-        }
-      </div>
-    </mat-tab>
-    <mat-tab label="IN PROGRESS">
-      <div class="cycles-grid">
-        @for(cycle of inProgressCycles(); track cycle.id){
-        <app-card [cycle]="cycle"></app-card>
-        }@empty{
-        <p>No cycles found.</p>
-        }
-      </div>
-    </mat-tab>
-    <mat-tab label="COMPLETED">
-      <div class="cycles-grid">
-        @for(cycle of completedCycles(); track cycle.id){
-        <app-card [cycle]="cycle"></app-card>
-        }@empty{
-        <p>No cycles found.</p>
-        }
-      </div>
-    </mat-tab>
-    <mat-tab label="CANCELLED">
-      <div class="cycles-grid">
-        @for(cycle of cancelledCycles(); track cycle.id){
-        <app-card [cycle]="cycle"></app-card>
-        }@empty{
-        <p>No cycles found.</p>
-        }
-      </div>
-    </mat-tab>
-    <mat-tab label="FAILED">
-      <div class="cycles-grid">
-        @for(cycle of failureCycles(); track cycle.id){
-        <app-card [cycle]="cycle"></app-card>
-        }@empty{
-        <p>No cycles found.</p>
-        }
-      </div>
-    </mat-tab>
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" dynamicHeight>
+    @for(tab of tabs; track tab.label){
+      <mat-tab [label]="tab.label">
+        <div class="cycles-grid">
+          @for(cycle of tab.cycles(); track cycle.id){
+            <app-card [cycle]="cycle"></app-card>
+          }@empty{
+            <p>No cycles found.</p>
+          }
+        </div>
+      </mat-tab>
+    }
   </mat-tab-group>
 </section>

@@ -1,11 +1,9 @@
 import { Component, computed, effect, inject, OnInit, resource } from '@angular/core';
 import { MatTab, MatTabGroup } from '@angular/material/tabs';
-import { Card } from '../../components/card';
-import { DataBundle } from '../../models/bundle.model';
+import { Card } from '../../components/card-cycle/card';
 import { ApiService } from '../../services/api.service';
-import { Cycle, CycleEnhanced } from '../../models/cycle.model';
-import { Device } from '../../models/device.model';
-import { Tariff } from '../../models/tariff.mode';
+import { Cycle, CycleEnhanced, CycleStatus } from '../../models/cycle.model';
+import { getEnhancedCycle } from '../../utils/utils';
 
 @Component({
   selector: 'app-cycles',
@@ -17,55 +15,35 @@ import { Tariff } from '../../models/tariff.mode';
 export class Cycles {
   private _apiService = inject(ApiService);
 
-  protected readonly tariffs = computed(() => this._apiService.dataBundler.value()?.tariffs);
-  protected readonly devices = computed(() => this._apiService.dataBundler.value()?.devices);
-  protected readonly cycles = computed(() =>
-    this._getEnhancedCycle(this._apiService.dataBundler.value()?.cycles)
-  );
+  constructor() {
+    effect(() => {
+      this._apiService.dataBundler.reload();
+    });
+  }
 
-  protected readonly inProgressCycles = computed(() => {
-    const inProgressCycles = this.cycles()?.filter((cycle) => cycle.status === 'in-progress');
+  readonly tabs = [
+    { label: 'ALL', cycles: computed(() => this._getEnhancedCycleByStatus()) },
+    { label: 'IN PROGRESS', cycles: computed(() => this._getEnhancedCycleByStatus('in-progress')) },
+    { label: 'COMPLETED', cycles: computed(() => this._getEnhancedCycleByStatus('completed')) },
+    { label: 'CANCELLED', cycles: computed(() => this._getEnhancedCycleByStatus('cancelled')) },
+    { label: 'FAILED', cycles: computed(() => this._getEnhancedCycleByStatus('failure')) },
+  ];
 
-    return this._getEnhancedCycle(inProgressCycles);
-  });
-  protected readonly completedCycles = computed(() => {
-    const completedCycles = this.cycles()?.filter((cycle) => cycle.status === 'completed');
+  private _getEnhancedCycleByStatus(status?: CycleStatus): CycleEnhanced[] {
+    const cycles = this._apiService.dataBundler.value()?.cycles;
+    const devices = this._apiService.dataBundler.value()?.devices;
+    const tariffs = this._apiService.dataBundler.value()?.tariffs;
 
-    return this._getEnhancedCycle(completedCycles);
-  });
-
-  protected readonly cancelledCycles = computed(() => {
-    const cancelledCycles = this.cycles()?.filter((cycle) => cycle.status === 'cancelled');
-
-    return this._getEnhancedCycle(cancelledCycles);
-  });
-
-  protected readonly failureCycles = computed(() => {
-    const failureCycles = this.cycles()?.filter((cycle) => cycle.status === 'failure');
-
-    return this._getEnhancedCycle(failureCycles);
-  });
-
-  private _getEnhancedCycle = (cycles: Cycle[] | undefined): CycleEnhanced[] => {
     if (!cycles) {
       return [];
     }
 
-    return cycles.map((cycle) => {
-      const device: Device | undefined = this.devices()?.find(
-        (device) => device.id === cycle.deviceId
-      );
-      const tariff: Tariff | undefined = this.tariffs()?.find(
-        (tariff) => tariff.id === String(device?.tariffId)
-      );
+    if (!status) {
+      return getEnhancedCycle(cycles, devices, tariffs);
+    }
 
-      return {
-        ...cycle,
-        DeviceName: device?.name ?? 'Unknown Device',
-        DeviceType: device?.type ?? 'unknown',
-        price: tariff?.price ?? 0,
-        currency: tariff?.currency ?? 'N/A',
-      };
-    });
-  };
+    const filteredCycles = cycles?.filter((cycle: Cycle) => cycle.status === status);
+
+    return getEnhancedCycle(filteredCycles, devices, tariffs);
+  }
 }
