@@ -137,6 +137,38 @@
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0",
       "deviceId": "48567",
       "invoiceLines": []
+    },
+    {
+      "id": "13",
+      "startedAt": "2025-10-28T22:21:28.191Z",
+      "stoppedAt": "2025-10-28T22:21:28.191Z",
+      "status": "in-progress",
+      "userId": "TEST USER",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0",
+      "deviceId": "48111",
+      "invoiceLines": [
+        {
+          "name": "Little giant dryer",
+          "totalPrice": 1.5,
+          "currency": "EUR"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "startedAt": "2025-10-28T22:21:44.124Z",
+      "stoppedAt": "2025-10-28T22:21:44.124Z",
+      "status": "in-progress",
+      "userId": "TEST USER",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0",
+      "deviceId": "48567",
+      "invoiceLines": [
+        {
+          "name": "Small washing machine",
+          "totalPrice": 2.5,
+          "currency": "EUR"
+        }
+      ]
     }
   ],
   "tariffs": [

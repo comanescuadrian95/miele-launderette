@@ -1,59 +1,118 @@
-# Launderette
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.6.
+# Miele Launderette
 
-## Development server
+Premium laundry services with professional-grade equipment — an Angular application created for the FE Assessment task.
+Users can start and track laundry cycles in real-time while interacting with a mock backend API.
 
-To start a local development server, run:
+## Tech Stack
+| Layer     | Technology                       |
+|----------|-----------------------------------|
+| Frontend | Angular, TypeScript, RxJS, SCSS   |
+| Backend  | JSON Server (Mock)                |
+| UI       | Angular Material components       |
+| Testing  | Jasmine + Karma (✅ Unit Tests)   |
 
+## Installation & Setup
+
+### 1️⃣ Install dependencies
+```bash
+npm install
+```
+
+### 2️⃣ Start the backend API (Terminal #1)
+```bash
+json-server ./backend-api.json --watch
+```
+Backend runs at: [http://localhost:3000](http://localhost:3000)
+
+### 3️⃣ Start Angular app (Terminal #2)
 ```bash
 ng serve
 ```
+Frontend opens at: [http://localhost:4200/](http://localhost:4200/)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Application Overview
 
-## Code scaffolding
+### User Journey Breakdown (Screenshots Included)
+1️⃣ Landing Page — Start or Monitor a Laundry Cycle
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+![alt text](screenshots/image.png)
+![alt text](screenshots/image-1.png)
 
-```bash
-ng generate component component-name
-```
+2️⃣ Start New Cycle — Step 1: User Identification
+(Optional — autocomplete from previous users)
+![alt text](screenshots/image-2.png)
+![alt text](screenshots/image-3.png)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+3️⃣ Start New Cycle — Step 2: Select Device & Cycle
+(Device list dynamically shows pricing & availability)
+![alt text](screenshots/image-4.png)
 
-```bash
-ng generate --help
-```
+4️⃣ Start New Cycle — Step 3: Confirm Cycle
+(Review selections before starting)
+![alt text](screenshots/image-5.png)
 
-## Building
+5️⃣ On Create → Redirect to Active Cycles + Success Snackbar
+![alt text](screenshots/image-6.png)
 
-To build the project run:
+6️⃣ Cycles List — Filter by Active, History, All
+(With Invoice Modal Preview)
+![alt text](screenshots/image-7.png)
+![alt text](screenshots/image-8.png)
+![alt text](screenshots/image-9.png)
 
-```bash
-ng build
-```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Features & Functionality
 
-## Running unit tests
+✔ Real-time cycle management
+✔ 3-step guided workflow to create cycles
+✔ Invoice breakdown modal
+✔ Responsive UI aligned with Miele MOVE styling
+✔ Unknown user auto-handling
+✔ Tabs to sort cycles by status
+✔ Snackbar success feedback
+✔ Unit tests implemented
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Manage Laundry Cycles
 
+| Tab    | Purpose                      |
+|--------|------------------------------|
+| Active | Shows in-progress cycles     |
+| History| Completed, cancelled, failed |
+| All    | Complete record of all cycles|
+
+Each cycle card displays:
+- Status & timestamps
+- Device + Tariff info
+- User
+- Price incl. VAT
+
+## API Endpoints Used
+
+| Method | Endpoint    | Purpose           |
+|--------|-------------|-------------------|
+| GET    | /cycles     | Fetch cycles      |
+| GET    | /devices    | Load devices      |
+| GET    | /tariffs    | Retrieve pricing  |
+| POST   | /cycles     | Create new cycle  |
+
+JSON Server automatically persists changes.
+
+## Testing
+
+To execute unit tests:
 ```bash
 ng test
 ```
+✔ Ensures app stability & protects key flow regressions
 
-## Running end-to-end tests
+## Additional Notes
 
-For end-to-end (e2e) testing, run:
+- Project aligned with all FE Assessment requirements
+- Mock backend (no real hardware integration)
+- Clean component structure & scalable architecture
 
-```bash
-ng e2e
-```
+## Author
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Developed by Adrian Comanescu
+Front-End Developer
