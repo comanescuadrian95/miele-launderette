@@ -1,12 +1,12 @@
 import { Component, signal } from '@angular/core';
-import { Main, Header, Footer } from './layout';
+import { Footer, Header, Main } from './layout';
 
 @Component({
   selector: 'app-root',
   imports: [Main, Header, Footer],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('Launderette');
+  readonly title = signal('Miele laundurette');
 }

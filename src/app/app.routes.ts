@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
-import { Home, CyclesList } from './features';
-import { CreateCycles } from './features/pages/create-cycles/create-cycles';
+import { Home, CyclesList, CreateCycles } from './features/pages';
 
 export const routes: Routes = [
   {

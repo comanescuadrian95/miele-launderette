@@ -1,6 +1,4 @@
-import { Cycle, CycleEnhanced } from '../models/cycle.model';
-import { Device } from '../models/device.model';
-import { Tariff } from '../models/tariff.mode';
+import { Device, Tariff, Cycle, CycleEnhanced } from '../models';
 
 export function getEnhancedDevice(devices: Device[] | undefined, tariffs: Tariff[] | undefined) {
   if (!devices) {
@@ -37,8 +35,8 @@ export function getEnhancedCycle(
 
     return {
       ...cycle,
-      DeviceName: device?.name ?? 'Unknown Device',
-      DeviceType: device?.type ?? 'unknown',
+      deviceName: device?.name ?? 'Unknown Device',
+      deviceType: device?.type ?? 'unknown',
       price: tariff?.price ?? 0,
       currency: tariff?.currency ?? 'N/A',
     };

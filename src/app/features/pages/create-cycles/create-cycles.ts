@@ -1,38 +1,65 @@
-import { Component, computed, effect, inject } from '@angular/core';
+import { Component, inject, computed, effect } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatStepperModule } from '@angular/material/stepper';
-import { ApiService } from '../../services/api.service';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { Cycle } from '../../models/cycle.model';
-import { MatIcon } from '@angular/material/icon';
-import { getEnhancedDevice } from '../../utils/utils';
-import { CardDevice } from '../../components/card-device/card-device';
-import { DeviceEnhanced } from '../../models/device.model';
+import { MatAutocompleteModule, MatOption } from '@angular/material/autocomplete';
+import { MatButton } from '@angular/material/button';
+import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatStepperModule } from '@angular/material/stepper';
 import { Router } from '@angular/router';
+import { CardDevice } from '../../components';
+import { DeviceEnhanced, Cycle } from '../../models';
+import { ApiService } from '../../services/api.service';
+import { getEnhancedDevice } from '../../utils/utils';
 
 @Component({
   selector: 'app-create-cycles',
   imports: [
-    MatButtonModule,
+    MatButton,
     MatStepperModule,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule,
+    MatInput,
     MatAutocompleteModule,
-    MatIcon,
     CardDevice,
+    MatOption,
+    MatLabel,
+    MatFormField,
   ],
   standalone: true,
   templateUrl: './create-cycles.html',
   styleUrl: './create-cycles.scss',
 })
 export class CreateCycles {
-  private _router = inject(Router);
+  private readonly _formBuilder = inject(FormBuilder);
+  private readonly _apiService = inject(ApiService);
+  private readonly _snackBar = inject(MatSnackBar);
+  private readonly _router = inject(Router);
+
+  readonly isLinear = true;
+
+  readonly userForm = this._formBuilder.group({
+    userId: [''],
+  });
+
+  readonly deviceForm = this._formBuilder.group({
+    selectedDevice: [null as DeviceEnhanced | null, Validators.required],
+  });
+
+  readonly devices = computed(() => {
+    const bundle = this._apiService.dataBundler.value();
+
+    return getEnhancedDevice(bundle?.devices, bundle?.tariffs);
+  });
+
+  readonly users = computed<string[]>(() => {
+    const cycles = this._apiService.dataBundler.value()?.cycles ?? [];
+
+    return Array.from(new Set(cycles.map((cycle) => cycle.userId))).filter(
+      (userId) => userId !== 'unknown'
+    );
+  });
 
   constructor() {
     effect(() => {
@@ -40,89 +67,61 @@ export class CreateCycles {
     });
   }
 
-  protected readonly devices = computed(() => {
-    const devices = this._apiService.dataBundler.value()?.devices;
-    const tariffs = this._apiService.dataBundler.value()?.tariffs;
+  onDeviceSelected(device: DeviceEnhanced): void {
+    this.deviceForm.patchValue({ selectedDevice: device });
+  }
 
-    return getEnhancedDevice(devices, tariffs);
-  });
+  submitStepperForm(): void {
+    const userId = this.userForm.value.userId || 'unknown';
+    const device = this.deviceForm.value.selectedDevice;
 
-  protected readonly users = computed<string[]>(() => {
-    let users: string[] = [];
-    const dataBundler = this._apiService.dataBundler.value();
-
-    if (!dataBundler?.cycles) return users;
-
-    users = dataBundler.cycles
-      .filter(
-        (cycle: Cycle, index: number, self: Cycle[]) =>
-          self.findIndex((c) => c.userId === cycle.userId) === index
-      )
-      .map((cycle: Cycle) => cycle.userId);
-
-    return users;
-  });
-
-  private _formBuilder = inject(FormBuilder);
-  private _apiService = inject(ApiService);
-  private _snackBar = inject(MatSnackBar);
-
-  userStepForm = this._formBuilder.group({
-    userId: [''],
-  });
-
-  deviceStepForm = this._formBuilder.group({
-    selectedDevice: [null as DeviceEnhanced | null, Validators.required],
-  });
-
-  isLinear = true;
-
-  submitStepperForm() {
-    const userId = this.userStepForm.value.userId || 'unknown';
-    const selectedDevice = this.deviceStepForm.value.selectedDevice;
-    const cycles = this._apiService.dataBundler.value()?.cycles ?? [];
-    const nextId =
-      cycles.length > 0 ? (Math.max(...cycles.map((c) => Number(c.id) || 0)) + 1).toString() : '1';
-
-    const now = new Date().toISOString();
-
-    if (!selectedDevice) {
-      this._snackBar.open('Error: No device selected.', 'Close', {
-        duration: 3000,
-        horizontalPosition: 'center',
-        verticalPosition: 'top',
-      });
-
+    if (!device) {
+      this._showSnackBar('Error: No device selected.');
       return;
     }
 
-    const cycle: Cycle = {
-      startedAt: now,
-      stoppedAt: now,
-      status: 'in-progress', // or set as needed
-      userId,
-      userAgent: navigator.userAgent,
-      deviceId: selectedDevice.id,
-      id: nextId,
-      invoiceLines: [],
-    };
+    const cycle = this._buildCycle(userId, device);
 
     this._apiService.postCycle(cycle).subscribe({
-      next: (cycle) => {
-        this._snackBar.open('Cycle created successfully!', 'Close', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'top',
-        });
+      next: () => {
+        this._showSnackBar('Cycle created successfully!');
         this._router.navigate(['/cycles-list']);
       },
       error: () => {
-        this._snackBar.open('Error creating cycle. Please try again.', 'Close', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'top',
-        });
+        this._showSnackBar('Error creating cycle. Please try again.');
       },
+    });
+  }
+
+  private _buildCycle(userId: string, device: DeviceEnhanced): Cycle {
+    const cycles = this._apiService.dataBundler.value()?.cycles ?? [];
+    const nextId =
+      cycles.length > 0 ? (Math.max(...cycles.map((c) => Number(c.id) || 0)) + 1).toString() : '1';
+    const now = new Date().toISOString();
+
+    return {
+      startedAt: now,
+      stoppedAt: now,
+      status: 'in-progress',
+      userId,
+      userAgent: navigator.userAgent,
+      deviceId: device.id,
+      id: nextId,
+      invoiceLines: [
+        {
+          name: device.name,
+          totalPrice: device.price,
+          currency: device.currency,
+        },
+      ],
+    };
+  }
+
+  private _showSnackBar(message: string): void {
+    this._snackBar.open(message, 'Close', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
     });
   }
 }

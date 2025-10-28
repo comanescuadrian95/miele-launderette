@@ -1,23 +1,40 @@
-// Angular Material core setup with full theming support
 @use '@angular/material' as mat;
-@use './_tokens' as tokens;
 @use './_theme-colors' as miele-theme-colors;
 
 @include mat.core();
 
-$miele-theme: mat.define-theme((
-  color: (
-    theme-type: light,
-    primary: miele-theme-colors.$primary-palette,
-    tertiary: miele-theme-colors.$tertiary-palette,
-  ),
-  typography: (
-    plain-family: tokens.$font-family,
-    brand-family: tokens.$font-family,
-  ),
-  density: (
-    scale: 0,
-  ),
-));
+$font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 
-@include mat.all-component-themes($miele-theme);
+$miele-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: miele-theme-colors.$primary-palette,
+      tertiary: miele-theme-colors.$tertiary-palette,
+    ),
+    typography: (
+      plain-family: $font-family,
+      brand-family: $font-family,
+    ),
+    density: (
+      scale: 0,
+    ),
+  )
+);
+
+@include mat.toolbar-theme($miele-theme);
+@include mat.button-theme($miele-theme);
+@include mat.fab-theme($miele-theme);
+@include mat.card-theme($miele-theme);
+@include mat.tabs-theme($miele-theme);
+@include mat.form-field-theme($miele-theme);
+@include mat.input-theme($miele-theme);
+@include mat.stepper-theme($miele-theme);
+@include mat.radio-theme($miele-theme);
+@include mat.dialog-theme($miele-theme);
+@include mat.autocomplete-theme($miele-theme);
+@include mat.snack-bar-theme($miele-theme);
+@include mat.option-theme($miele-theme);
+@include mat.icon-theme($miele-theme);
+@include mat.card-theme($miele-theme);
+@include mat.icon-button-theme($miele-theme);

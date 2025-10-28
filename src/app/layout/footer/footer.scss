@@ -1,21 +1,18 @@
-// Footer component styles using Miele design tokens
-@use '../../../assets/styles/_tokens' as *;
-
 :host {
   mat-toolbar {
     min-height: 5rem;
     display: flex;
-    padding: 0 var(--m-space-md);
+    padding: 0 16px;
     justify-content: space-between;
     align-items: center;
 
     [matButton='outlined'] {
-      --mat-button-outlined-state-layer-color: var(--m-white);
-      --mat-button-outlined-outline-color: var(--m-white);
-      --mat-button-outlined-label-text-color: var(--m-white);
+      --mat-button-outlined-state-layer-color: #ffffff;
+      --mat-button-outlined-outline-color: #ffffff;
+      --mat-button-outlined-label-text-color: #ffffff;
 
       &:hover {
-        --mat-button-outlined-outline-color: var(--m-white);
+        --mat-button-outlined-outline-color: #ffffff;
         --mat-button-outlined-outline-color: transparent;
       }
     }
@@ -23,7 +20,7 @@
     .action-buttons{
       margin-left: auto;
       display: flex;
-      gap: var(--m-space-md);
+      gap: 16px;
     }
   }
 }

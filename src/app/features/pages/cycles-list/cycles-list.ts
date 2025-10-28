@@ -1,8 +1,8 @@
-import { Component, computed, effect, inject } from '@angular/core';
-import { MatTab, MatTabGroup } from '@angular/material/tabs';
-import { Card } from '../../components/card-cycle/card';
+import { Component, inject, effect, computed } from '@angular/core';
+import { MatTabGroup, MatTab } from '@angular/material/tabs';
+import { Card } from '../../components';
+import { CycleEnhanced, Cycle } from '../../models';
 import { ApiService } from '../../services/api.service';
-import { Cycle, CycleEnhanced, CycleStatus } from '../../models/cycle.model';
 import { getEnhancedCycle } from '../../utils/utils';
 
 @Component({
@@ -37,7 +37,6 @@ export class CyclesList {
     }
 
     if (!status) {
-      // No status: return all
       return getEnhancedCycle(cycles, devices, tariffs);
     }
 

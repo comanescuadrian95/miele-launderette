@@ -1,4 +1,4 @@
-import { DeviceType } from './device.model';
+import { deviceType } from './device.model';
 import { Invoice } from './invoice.model';
 
 export type CycleStatus = 'failure' | 'in-progress' | 'completed' | 'cancelled';
@@ -15,8 +15,8 @@ export interface Cycle {
 }
 
 export interface CycleEnhanced extends Cycle {
-  DeviceType: DeviceType;
-  DeviceName: string;
+  deviceType: deviceType;
+  deviceName: string;
   price: number;
   currency: string;
 }

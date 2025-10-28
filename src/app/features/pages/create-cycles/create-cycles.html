@@ -1,17 +1,19 @@
-<section class="content-wrapper">
+<section class="content-wrapper" aria-labelledby="create-cycle-heading">
+  <h2 id="create-cycle-heading">Start a new laundry cycle</h2>
+
   <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
-    <!-- Step 1: User Autocomplete (optional) -->
-    <mat-step [stepControl]="userStepForm">
-      <form [formGroup]="userStepForm">
+    <mat-step [stepControl]="userForm" label="User Identification">
+      <form [formGroup]="userForm">
         <div class="step-zone">
-          <ng-template matStepLabel>User Identification</ng-template>
           <mat-form-field appearance="outline">
             <mat-label>User ID</mat-label>
             <input
               matInput
-              placeholder="e.g user123"
+              placeholder="e.g. user123"
               formControlName="userId"
               [matAutocomplete]="auto"
+              aria-describedby="userIdHelp"
+              cdkFocusInitial
             />
             <mat-autocomplete #auto="matAutocomplete">
               @for (user of users(); track user) {
@@ -26,42 +28,69 @@
       </form>
     </mat-step>
 
-    <!-- Step 2: Device Selection (mandatory) -->
-    <mat-step [stepControl]="deviceStepForm">
-      <form [formGroup]="deviceStepForm">
+    <mat-step [stepControl]="deviceForm" label="Select Device & Cycle">
+      <form [formGroup]="deviceForm">
         <div class="step-zone">
-          <ng-template matStepLabel>Select Device</ng-template>
-          <div class="cycles">
+          <div class="cycles" role="radiogroup" aria-label="Available devices">
             @for (device of devices(); track device.id) {
             <app-card-device
+              class="device-card"
               [device]="device"
-              [selectedInput]="device.id === deviceStepForm.value.selectedDevice?.id"
-              (selectedChange)="deviceStepForm.patchValue({ selectedDevice: device })"
+              [selectedInput]="device.id === deviceForm.value.selectedDevice?.id"
+              (selectedChange)="onDeviceSelected(device)"
+              [attr.aria-checked]="device.id === deviceForm.value.selectedDevice?.id"
+              role="radio"
             ></app-card-device>
+            } @if (!devices() || devices().length === 0) {
+            <div class="empty-state" aria-live="polite">
+              No devices available right now. Please try again shortly.
+            </div>
             }
           </div>
           <div class="actions">
-            <button matButton="outlined" matStepperPrevious>Back</button>
-            <button matButton="filled" matStepperNext [disabled]="!deviceStepForm.valid">
-              Next
-            </button>
+            <button matButton="outlined" color="primary" matStepperPrevious>Back</button>
+            <button matButton="filled" matStepperNext [disabled]="deviceForm.invalid">Next</button>
           </div>
         </div>
       </form>
     </mat-step>
 
-    <!-- Step 3: Confirmation -->
-    <mat-step>
+    <mat-step label="Confirm Cycle">
       <div class="step-zone">
-        <ng-template matStepLabel>Confirm Cycle</ng-template>
-        <p>Are you sure you want to create this cycle?</p>
+        <p class="confirm-text">
+          You are about to start a new cycle for
+          <strong>{{ deviceForm.value.selectedDevice?.name || '—' }}</strong>
+          as <strong>{{ userForm.value.userId || 'unknown' }}</strong
+          >.
+        </p>
+        <div class="summary">
+          <div class="summary-item">
+            <span class="label">User</span>
+            <span class="value">{{ userForm.value.userId || 'unknown' }}</span>
+          </div>
+          <div class="summary-item">
+            <span class="label">Device</span>
+            <span class="value">{{ deviceForm.value.selectedDevice?.name || '—' }}</span>
+          </div>
+          <div class="summary-item">
+            <span class="label">Type</span>
+            <span class="value">{{ deviceForm.value.selectedDevice?.type || '—' }}</span>
+          </div>
+          <div class="summary-item">
+            <span class="label">Price</span>
+            <span class="value">
+              {{ deviceForm.value.selectedDevice?.price || '—' }}
+              {{ deviceForm.value.selectedDevice?.currency || '' }}
+            </span>
+          </div>
+          <div class="summary-item">
+            <span class="label">Device ID</span>
+            <span class="value">{{ deviceForm.value.selectedDevice?.id || '—' }}</span>
+          </div>
+        </div>
         <div class="actions">
           <button matButton="outlined" matStepperPrevious>Back</button>
-          <button
-            matButton="filled"
-            (click)="submitStepperForm()"
-            [disabled]="!deviceStepForm.valid || !userStepForm.valid"
-          >
+          <button matButton="filled" (click)="submitStepperForm()" [disabled]="deviceForm.invalid">
             Create
           </button>
         </div>

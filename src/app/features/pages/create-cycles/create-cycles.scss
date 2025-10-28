@@ -1,31 +1,67 @@
-@use '../../../../assets/styles/tokens' as *;
-
 :host {
+  --mat-form-field-outlined-focus-outline-color: #f59b00;
+  --mat-form-field-outlined-focus-label-text-color: #3f484f;
+
+  h2 {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #666666;
+  }
+
   .step-zone {
-    padding: var(--m-space-lg) 0;
-    margin-bottom: var(--m-space-lg);
-    margin-top: var(--m-space-lg);
+    padding: 24px 0;
+    margin-bottom: 24px;
+    margin-top: 24px;
   }
 
   .cycles {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--m-space-lg);
-    margin-bottom: var(--m-space-lg);
-  }
-
-  mat-form-field,
-  .actions {
-    margin-bottom: var(--m-space-md);
+    gap: 24px;
+    margin-bottom: 24px;
   }
 
   .actions {
     display: flex;
-    gap: var(--m-space-md);
-    margin-top: var(--m-space-md);
+    gap: 16px;
+    margin-top: 16px;
   }
 
-  mat-step {
-    margin-bottom: var(--m-space-lg);
+  .summary {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 24px 0;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+  }
+
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #dee2e6;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      color: #495057;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .value {
+      color: #000000;
+      font-weight: 600;
+      font-size: 1rem;
+      text-align: right;
+    }
   }
 }

@@ -1,10 +1,10 @@
-import { ChangeDetectionStrategy, Component, Inject, input } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { MatCardModule } from '@angular/material/card';
-import { MatIcon } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { Invoice } from '../../models/invoice.model';
+import { Component, ChangeDetectionStrategy, input, Inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatIcon } from '@angular/material/icon';
+import { Invoice } from '../../models';
 
 @Component({
   selector: 'app-invoice-list',

@@ -1,62 +1,33 @@
-@use '../../../../assets/styles/_tokens' as *;
-
 :host {
   display: block;
-  padding: var(--m-space-lg);
+  padding: 24px;
 
   .cycles-tabs {
     position: sticky;
-    top: 64px; /* adjust to your toolbar height */
-    z-index: var(--m-z-sticky);
-    background: var(--m-body-bg);
-    margin-bottom: var(--m-space-md);
-
-    .mat-mdc-tab-header {
-      border-bottom: 1px solid var(--m-gray-200);
-    }
-
-    /* active indicator = Miele gold */
-    .mdc-tab-indicator__content--underline {
-      border-color: var(--m-primary) !important;
-    }
-
-    /* tab label colors */
-    .mdc-tab__text-label {
-      color: var(--m-gray-700);
-    }
-    .mdc-tab--active .mdc-tab__text-label {
-      color: var(--m-body-color);
-      font-weight: 600;
-    }
+    top: 64px;
+    z-index: 10;
+    background: #ffffff;
+    margin-bottom: 16px;
   }
 
-  /* Responsive grid for cards */
   .cycles-grid {
     display: grid;
     overflow: hidden;
     grid-template-columns: repeat(auto-fit, minmax(560px, 1fr));
-    gap: var(--m-space-lg);
+    gap: 24px;
     align-items: start;
 
-    /* Narrow screens: single column */
     @media (max-width: 640px) {
       grid-template-columns: 1fr;
-      gap: var(--m-space-md);
+      gap: 16px;
     }
   }
 
-  /* Optional: make each mat-tab body match the page bg */
-  .mat-mdc-tab-body-content {
-    background: var(--m-tertiary-bg);
-    padding-block: var(--m-space-lg);
-  }
-
-  /* Optional: tune card width/center if you want fewer columns on very wide screens */
   .cycle-card {
-    max-width: 1040px; /* keep cards from becoming too wide */
+    max-width: 1040px;
     margin-inline: auto;
-    box-shadow: var(--m-shadow-sm);
-    border-radius: var(--m-radius-lg);
-    background: var(--m-body-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    background: #ffffff;
   }
 }

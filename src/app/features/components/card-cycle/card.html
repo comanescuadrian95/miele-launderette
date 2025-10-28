@@ -2,16 +2,16 @@
   <mat-card-header class="cycle-header">
     <div class="header-left">
       <div class="title-wrap">
-        <mat-card-title>{{ cycle()?.DeviceName }}</mat-card-title>
-        <mat-card-subtitle>{{ cycle()?.DeviceType }}</mat-card-subtitle>
+        <mat-card-title>{{ cycle().deviceName }}</mat-card-title>
+        <mat-card-subtitle>{{ cycle().deviceType }}</mat-card-subtitle>
       </div>
       <mat-chip-set>
-        <mat-chip [attr.data-status]="cycle()?.status">{{ cycle()?.status }}</mat-chip>
+        <mat-chip [attr.data-status]="cycle().status">{{ cycle().status }}</mat-chip>
       </mat-chip-set>
     </div>
 
     <mat-icon class="machine-icon" aria-hidden="true">{{
-      cycle()?.DeviceType === 'washer' ? 'local_laundry_service' : 'dry_cleaning'
+      cycle().deviceType === 'washer' ? 'local_laundry_service' : 'dry_cleaning'
     }}</mat-icon>
   </mat-card-header>
 
@@ -20,25 +20,25 @@
       <dl class="kv">
         <div class="row">
           <dt>Started</dt>
-          <dd>{{ cycle()?.startedAt | date : 'dd MMM yyyy, hh:mm a' }}</dd>
+          <dd>{{ cycle().startedAt | date : 'dd MMM yyyy, hh:mm a' }}</dd>
         </div>
         <div class="row">
           <dt>Stopped</dt>
-          <dd>{{ cycle()?.stoppedAt | date : 'dd MMM yyyy, hh:mm a' }}</dd>
+          <dd>{{ cycle().stoppedAt | date : 'dd MMM yyyy, hh:mm a' }}</dd>
         </div>
         <div class="row">
           <dt>User</dt>
-          <dd>{{ cycle()?.userId }}</dd>
+          <dd>{{ cycle().userId }}</dd>
         </div>
         <div class="row clamp">
           <dt>User agent</dt>
-          <dd [title]="cycle()?.userAgent">
-            {{ cycle()?.userAgent }}
+          <dd [title]="cycle().userAgent">
+            {{ cycle().userAgent }}
           </dd>
         </div>
         <div class="row meta">
           <dt>Device ID</dt>
-          <dd>{{ cycle()?.deviceId }}</dd>
+          <dd>{{ cycle().deviceId }}</dd>
         </div>
       </dl>
     </section>
@@ -55,7 +55,7 @@
       </button>
       <div class="totals">
         <div class="total-label">Total</div>
-        <div class="total-value danger">€ {{ cycle()?.price | number : '1.2-2' }}</div>
+        <div class="total-value danger">€ {{ cycle().price | number : '1.2-2' }}</div>
       </div>
     </section>
   </mat-card-content>

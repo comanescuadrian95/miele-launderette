@@ -1,25 +1,22 @@
-// Header component styles using Miele design tokens
-@use '../../../assets/styles/_tokens' as *;
-
 :host {
   mat-toolbar {
     min-height: 5rem;
     display: flex;
-    padding: 0 var(--m-space-md);
+    padding: 0 16px;
     justify-content: center;
     align-items: start;
 
     .logo-link img {
       width: auto;
       transition: height 0.3s ease;
-      height: var(--m-logo-sm); // Mobile: 2.5rem
+      height: 2.5rem;
 
-      @media (min-width: #{$breakpoint-sm + 1px}) and (max-width: #{$breakpoint-md}) {
-        height: var(--m-logo-md); // Tablet: 3rem
+      @media (min-width: 577px) and (max-width: 768px) {
+        height: 3rem;
       }
 
-      @media (min-width: #{$breakpoint-md + 1px}) {
-        height: var(--m-logo-lg); // Desktop: 3.5rem
+      @media (min-width: 769px) {
+        height: 3.5rem;
       }
 
       &:hover {
@@ -28,18 +25,18 @@
       }
     }
 
-    @media (max-width: #{$breakpoint-lg}) {
-      padding: 0 var(--m-space-sm);
+    @media (max-width: 992px) {
+      padding: 0 8px;
       min-height: 3.75rem;
     }
 
-    @media (max-width: #{$breakpoint-md}) {
-      padding: 0 var(--m-space-sm);
+    @media (max-width: 768px) {
+      padding: 0 8px;
       min-height: 3.5rem;
     }
 
-    @media (max-width: #{$breakpoint-sm}) {
-      padding: 0 var(--m-space-xs);
+    @media (max-width: 576px) {
+      padding: 0 4px;
       min-height: 3.25rem;
     }
   }

@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [RouterOutlet, MatButtonModule, MatIconModule],
+  imports: [RouterOutlet],
   templateUrl: './main.html',
-  styleUrls: ['./main.scss']
+  styleUrls: ['./main.scss'],
 })
-export class Main {
-
-}
+export class Main {}

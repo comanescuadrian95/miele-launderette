@@ -10,18 +10,20 @@
   </mat-card-header>
   <mat-card-content>
     @for (invoice of data.invoices; track invoice.name) {
-      <div class="invoice-item">
-        <mat-icon class="invoice-icon">description</mat-icon>
-        <div class="invoice-details">
-          <div class="invoice-name">{{ invoice.name }}</div>
-          <div class="invoice-price">{{ invoice.totalPrice | number:'1.2-2' }} {{ invoice.currency }}</div>
+    <div class="invoice-item">
+      <mat-icon class="invoice-icon">description</mat-icon>
+      <div class="invoice-details">
+        <div class="invoice-name">{{ invoice.name }}</div>
+        <div class="invoice-price">
+          {{ invoice.totalPrice | number : '1.2-2' }} {{ invoice.currency }}
         </div>
       </div>
+    </div>
     } @empty {
-      <div class="no-invoices">
-        <mat-icon>info</mat-icon>
-        No invoices available for this cycle.
-      </div>
+    <div class="no-invoices">
+      <mat-icon>info</mat-icon>
+      No invoices available for this cycle.
+    </div>
     }
   </mat-card-content>
 </mat-card>

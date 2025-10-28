@@ -1,7 +1,7 @@
-export type DeviceType = 'washer' | 'dryer' | 'unknown';
+export type deviceType = 'washer' | 'dryer' | 'unknown';
 
 export interface Device {
-  type: DeviceType;
+  type: deviceType;
   id: string;
   name: string;
   tariffId: number;
